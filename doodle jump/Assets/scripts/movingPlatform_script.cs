@@ -1,9 +1,10 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class movingPlatform_script : MonoBehaviour
-{
+{ 
+    // הגדרת משתנים
     [Range(5, 20)]
     public float jumpforce;
     bool movment;
@@ -16,30 +17,30 @@ public class movingPlatform_script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (movment)
+        if (movment) // הגדרת תנועת הפלטפורמה לפי המיקום שלה בציר האיקס
         {
-            transform.position = new Vector3(transform.position.x + 0.03f, transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x + 0.03f, transform.position.y, transform.position.z); // תנועה ימינה
             if (transform.position.x > 3)
                 movment = false;
         }
         else
         {
-            transform.position = new Vector3(transform.position.x - 0.03f, transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x - 0.03f, transform.position.y, transform.position.z); // תנועה שמאלה
             if (transform.position.x < -3)
                 movment = true;
         }
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) // הגדרה של מקרה של השחקן נכנס לפלטפורמה
     {
         if (other.GetComponent<Player_movment>())
         {
             Rigidbody rb = other.GetComponent<Rigidbody>();
-            if (rb.velocity.y < 0)
+            if (rb.velocity.y < 0) // רק אם המהירות של השחקן היא שלילית
             {
                 Vector3 newVelocity = rb.velocity;
                 newVelocity.y = jumpforce;
-                rb.velocity = newVelocity;
-                Destroy(gameObject);
+                rb.velocity = newVelocity; // הגדרת מהירות חדשה
+                Destroy(gameObject); // הריסת הפלטפורמה
             }
            
 

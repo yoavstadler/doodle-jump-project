@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,15 +17,15 @@ public class normal_enemyScript : MonoBehaviour
     void Update()
     {
 
-        if (movment)
+        if (movment) // הגדרת תנועת האוייב לפי המיקום שלו בציר האיקס
         {
-            transform.position = new Vector3(transform.position.x + 0.015f, transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x + 0.015f, transform.position.y, transform.position.z); // תנועת האוייב ימינה
             if (transform.position.x > 3)
                 movment = false;
         }
         else
         {
-            transform.position = new Vector3(transform.position.x - 0.015f, transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x - 0.015f, transform.position.y, transform.position.z); // תנועת האוייב שמאלה
             if (transform.position.x < -3)
                 movment = true;
         }
