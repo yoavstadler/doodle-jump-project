@@ -19,13 +19,13 @@ public class angry_enemyScript : MonoBehaviour
 
         if (movment) // הגדרת תנועת האוייב לפי המיקום שלו בציר האיקס
         {
-            transform.position = new Vector3(transform.position.x + 0.03f, transform.position.y + 0.03f, transform.position.z); //תנועה ימינה ולמעלה 
+            transform.position = transform.position + new Vector3(1.5f * Time.deltaTime, 1.5f* Time.deltaTime, 0); // תנועה ימינה
             if (transform.position.x > 3)
                 movment = false;
         }
         else
         {
-            transform.position = new Vector3(transform.position.x - 0.03f, transform.position.y - 0.03f, transform.position.z); // תנועה שמאלה ולמטה
+            transform.position = transform.position - new Vector3(1.5f * Time.deltaTime, 1.5f * Time.deltaTime, 0); // תנועה שמאלה
             if (transform.position.x < -3)
                 movment = true;
         }

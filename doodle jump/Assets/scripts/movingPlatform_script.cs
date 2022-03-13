@@ -19,13 +19,13 @@ public class movingPlatform_script : MonoBehaviour
     {
         if (movment) // הגדרת תנועת הפלטפורמה לפי המיקום שלה בציר האיקס
         {
-            transform.position = new Vector3(transform.position.x + 0.03f, transform.position.y, transform.position.z); // תנועה ימינה
+            transform.position = transform.position + new Vector3(1.5f * Time.deltaTime, 0, 0); // תנועה ימינה
             if (transform.position.x > 3)
                 movment = false;
         }
         else
         {
-            transform.position = new Vector3(transform.position.x - 0.03f, transform.position.y, transform.position.z); // תנועה שמאלה
+            transform.position = transform.position - new Vector3(1.5f * Time.deltaTime, 0, 0); // תנועה שמאלה
             if (transform.position.x < -3)
                 movment = true;
         }
