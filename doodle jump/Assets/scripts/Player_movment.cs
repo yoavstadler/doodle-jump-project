@@ -12,6 +12,7 @@ public class Player_movment : MonoBehaviour
     float superJump = 15;
     public GameObject lostCanvas;
     public GameObject fire;
+    public GameObject NewHighScore;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +51,11 @@ public class Player_movment : MonoBehaviour
             gameObject.transform.position = new Vector3(3.3f, gameObject.transform.position.y, gameObject.transform.position.z);
         }
 
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            PlayerPrefs.SetInt("HS", 0);
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -62,8 +68,21 @@ public class Player_movment : MonoBehaviour
         if (other.tag.Contains("Enemy")) // הריסת אובייקטים כאשר השחקן נפסל
         {
             lostCanvas.SetActive(true);
-            Destroy(gameObject);
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z -10);
             Destroy(fire);
+
+            updateHighScore();
+        }
+    }
+
+    void updateHighScore()
+    {
+        int endscore = score;
+        if (endscore > PlayerPrefs.GetInt("HS"))
+        {
+            PlayerPrefs.SetInt("HS", endscore);
+            NewHighScore.SetActive(true);
+
         }
     }
 

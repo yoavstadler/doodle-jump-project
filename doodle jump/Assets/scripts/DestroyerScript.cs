@@ -7,6 +7,8 @@ public class DestroyerScript : MonoBehaviour
     // הגדרת משתנים
     public GameObject lostCanvas;
     public int DestroyedPlatformes;
+    public GameObject NewHighScore;
+    public GameObject Player;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,9 +28,21 @@ public class DestroyerScript : MonoBehaviour
 
     private void OnTriggerExit(Collider other) // הגדרת לולאה של יציאת השחקן מהדיסטרוייר
     {
-        if (other.GetComponent<Player_movment>()) 
+        if (other.GetComponent<Player_movment>())
+        {
             lostCanvas.SetActive(true); // הפעלת מסך הפסד
+            updateHighScore();
+        }
+    }
+     void updateHighScore()
+    {
+        int endscore = Player.GetComponent<Player_movment>().score; ;
+        if (endscore > PlayerPrefs.GetInt("HS"))
+        {
+            PlayerPrefs.SetInt("HS", endscore);
+            NewHighScore.SetActive(true);
 
+        }
     }
 
     // Update is called once per frame
