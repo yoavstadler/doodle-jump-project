@@ -6,6 +6,7 @@ public class coinCounterScript : MonoBehaviour
 {
    
     public GameObject coins; // קריאה לגיים אובג'קט של המטבעות
+    public GameObject Destroyer;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +21,11 @@ public class coinCounterScript : MonoBehaviour
     private void OnTriggerEnter(Collider other) // פגיעה של השחקן במטבעות
     {
         if (other.GetComponent<Player_movment>())
-            Destroy(coins.gameObject);
-        
+        {
+            gameObject.GetComponent<AudioSource>().Play();
+            transform.position = new Vector3(Destroyer.transform.position.x, Destroyer.transform.position.y +2, Destroyer.transform.position.z);
+            Destroy(gameObject, 2);
+        }
 
     }
 

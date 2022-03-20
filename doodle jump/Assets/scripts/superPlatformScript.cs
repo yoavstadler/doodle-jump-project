@@ -27,6 +27,7 @@ public class superPlatformScript : MonoBehaviour
                 Vector3 newVelocity = rb.velocity;
                 newVelocity.y = jumpforce;
                 rb.velocity = newVelocity;
+                GetComponent<AudioSource>().Play();
             }
 
         }

@@ -13,6 +13,7 @@ public class Player_movment : MonoBehaviour
     public GameObject lostCanvas;
     public GameObject fire;
     public GameObject NewHighScore;
+    public GameObject BackGround;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +41,8 @@ public class Player_movment : MonoBehaviour
             newVelocity.y += superJump; //שינוי מהירות של השחקן
             rb.velocity = newVelocity;
             print("jump");
+            fire.GetComponent<AudioSource>().Play();
+            
         }
 
         if (gameObject.transform.position.x > 3.3f) // יצרית גבולות של השחקן לפי המיקום שלו בציר האיקס
@@ -70,6 +73,9 @@ public class Player_movment : MonoBehaviour
             lostCanvas.SetActive(true);
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z -10);
             Destroy(fire);
+            BackGround.GetComponent<AudioSource>().Pause();
+            GetComponent<AudioSource>().Play();
+            
 
             updateHighScore();
         }

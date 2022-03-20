@@ -28,6 +28,7 @@ public class Platform_script : MonoBehaviour
                 Vector3 newVelocity = rb.velocity;
                 newVelocity.y = jumpforce;
                 rb.velocity = newVelocity;// הגדרת מהירות חדשה
+                GetComponent<AudioSource>().Play();
             }
 
         }

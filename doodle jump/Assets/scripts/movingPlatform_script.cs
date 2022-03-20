@@ -8,6 +8,8 @@ public class movingPlatform_script : MonoBehaviour
     [Range(5, 20)]
     public float jumpforce;
     bool movment;
+    public GameObject Destroyer;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -40,12 +42,16 @@ public class movingPlatform_script : MonoBehaviour
                 Vector3 newVelocity = rb.velocity;
                 newVelocity.y = jumpforce;
                 rb.velocity = newVelocity; // הגדרת מהירות חדשה
-                Destroy(gameObject); // הריסת הפלטפורמה
+                transform.position = new Vector3(Destroyer.transform.position.x, Destroyer.transform.position.y + 2, Destroyer.transform.position.z);
+                GetComponent<AudioSource>().Play();
+                Destroy(gameObject, 2);
             }
            
 
         }
     }
+
+   
 
     
 }

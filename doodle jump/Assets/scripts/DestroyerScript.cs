@@ -9,6 +9,7 @@ public class DestroyerScript : MonoBehaviour
     public int DestroyedPlatformes;
     public GameObject NewHighScore;
     public GameObject Player;
+    public GameObject BackGround;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +33,8 @@ public class DestroyerScript : MonoBehaviour
         {
             lostCanvas.SetActive(true); // הפעלת מסך הפסד
             updateHighScore();
+            GetComponent<AudioSource>().Play();
+            BackGround.GetComponent<AudioSource>().Pause();
         }
     }
      void updateHighScore()
