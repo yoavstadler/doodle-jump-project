@@ -42,7 +42,6 @@ public class Player_movment : MonoBehaviour
             rb.velocity = newVelocity;
             print("jump");
             fire.GetComponent<AudioSource>().Play();
-            
         }
 
         if (gameObject.transform.position.x > 3.3f) // יצרית גבולות של השחקן לפי המיקום שלו בציר האיקס
